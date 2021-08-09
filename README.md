@@ -26,4 +26,9 @@ pip3 install -r requirements.txt
 ```
 
 ## Setup Google Spreadsheets for API Access
-In order to give the script permission to access a google sheet, a things must be set up first. An in depth-tutorial can be found in step 1 [here](https://erikrood.com/Posts/py_gsheets.html)
+In order to give the script permission to access a google sheet, a things must be set up first. First, head [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjEy_Dx76TyAhVJop4KHVxZAYwQFnoECAUQAw&url=https%3A%2F%2Fconsole.developers.google.com%2F&usg=AOvVaw39ieEDI7pzBj4NtuzqS57M) to setup a project. Click "new project" and give it a name.
+
+Then, on the left-hand side, click "credentials." At the top click "create credentials" and create a "service account." Setup the name and hit continue. In the next section, roles, go to "basic" and select owner. This will ensure that there are no unnessesary complications between google and the script.
+
+From there, search "service accounts" at the top and go to the link. This will list all service accounts. Click on the account you just created. At the top, there is a tab that says "keys." Add a key, create a new key, and download as a json. Add the downloaded file to the folder of this project.
+
