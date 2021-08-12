@@ -2,6 +2,7 @@ import pygsheets
 import pandas as pd
 from requests_html import  HTMLSession
 import settings
+import time
 
 def getSellerRank(url): # returns integer value
     # setup of a lightweight chromium browser
@@ -23,7 +24,7 @@ def update_spreadsheet(rank):
     df['name'] = [str(rank), 'Steve', 'Sarah']
 
     #open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
-    print(settings.spreadsheet_title)
+    ## print(settings.spreadsheet_title)
     sh = gc.open(settings.spreadsheet_title)
 
     #select the first sheet 
@@ -33,8 +34,13 @@ def update_spreadsheet(rank):
     wks.set_dataframe(df,(1,1))
 
 def main():
-    rank = getSellerRank(settings.url)
-    update_spreadsheet(rank)
+    start_time = time.time()
+    while True:
+        if (time.time() - start_time) % 1800 == 0:
+            print("UPDATING")
+            rank = getSellerRank(settings.url)
+            update_spreadsheet(rank)
+            start_time = time.time()
 
 if __name__ == "__main__":
     main()
